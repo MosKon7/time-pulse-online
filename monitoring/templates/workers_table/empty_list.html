@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time-Pulse | Список сотрудников на сегодня пуст</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href='{% static "css/style.css"%}?{% now "U" %}'>
+    <link rel="stylesheet" type="text/css" href='{% static "css/workers_table/homepage.css"%}?{% now "U" %}'>
+    <script src='{% static "js/script.js"%}'></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container header__div">
+            <div class="div_logo">
+                <a href="/" class="logo">
+                    <img id="logo" src='{% static "img/icon.ico"%}' alt="Logo">
+                </a>
+                <div id="timer">
+                    <div class="timer__div">
+                        <span id="current-time"></span>
+                        <div class="current-time-div">
+                            <span id="current-time-day"></span>
+                            <!--<span id="current-time-task"></span>-->
+                        </div>
+                    </div>
+                    <div class="timer__div__btn">
+                        <a href="{% url 'register' %}" id="start-stop-btn" >Статус дня</a>
+                    </div>
+                    <span class="current_task"></span>
+                </div>
+            </div>
+            <div class="nav">
+                <a href="{% url 'list' %}" class="nav-link">Список сотрудников</a>
+                <a href="{% url 'list' %}" class="nav-link">Статистика</a>
+            </div>
+            <div class="user">
+                <a href="{% url 'logout' %}" class="nav-link">Выйти</a>
+                <!--<a href="{% url 'logout' %}" class="nav-link"> Выйти из аккаунта {{request.user}}</a>-->
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <div class="block">
+            <h1 class="empty">Список сотрудников на сегодня пуст</h1>
+        </div>
+    </main>
+</body>
+</html>

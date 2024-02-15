@@ -1,0 +1,190 @@
+/* Оформление тела HTML страницы */
+:root{
+  --arrow-bg: #4f86a1;
+  --arrow-icon: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg);
+  --option-bg: transparent;
+  --select-bg: #548eaa;
+}
+* {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+
+    font-family: "Segoe UI";
+    font-weight: 600;
+    color: #000000;
+}
+b {
+    font-weight: bold !important;
+}
+body{
+    position: relative;
+    background-color: #f0f0f0;
+}
+
+/* Оформление навигационного меню с ссылками */
+a {
+    color: #000000;
+    transition: all 0.3s;
+    text-decoration: none;
+    cursor: pointer;
+}
+a:hover{
+    color: #303b44;
+}
+.hidden{
+    display: none;
+}
+.container{
+    max-width: 1440px;
+    margin: auto;
+}
+.header{
+    background-color: #303b44;
+}
+.header__div{
+    padding: 1em;
+}
+.div_logo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2em;
+}
+#logo{
+    height: 3em;
+    image-rendering: pixelated;
+    object-position: center;
+    object-fit: cover;
+}
+#timer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.timer__div{
+    align-self: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+#current-time {
+    font-size: 22px;
+    color: #fff;
+}
+#start-stop-btn, #pause-btn {
+    padding: 5px;
+    margin: 5px 10px;
+    font-size: 18px;
+    border: unset;
+    background: transparent;
+    color: #f4f4f4;
+    cursor: pointer;
+}
+.header__div{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.header__div a{
+    font-family: "Segoe UI";
+    font-weight: 600;
+    color: #ededee;
+    transition: all 0.3s;
+}
+.header__div a:hover {
+    color: #548eaa;
+}
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2em;
+
+    flex-wrap: wrap;
+}
+main{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2em;
+    margin-top: 2em !important;
+}
+/* Оформление блока */
+.block {
+    padding: 2em;
+    background: #FFFFFF;
+    width: -webkit-fill-available;
+    overflow: hidden;
+}
+
+.block_items{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2em;
+    margin-top: 2em;
+}
+.block_items__item {
+    width: 100%;
+    width: -webkit-fill-available;
+    height: max-content;
+    background: #3d7ddd1c;
+    padding: 1em;
+}
+.block_items__item .title{
+    font-size: 18px;
+    border-bottom: 1px solid #303b44;
+}
+.feed_date{
+    font-size: 12px;
+    color: #303b44;
+}
+.feed_sab{
+    font-size: 12px;
+    color: #303b44;
+    margin-top: 1em;
+}
+.button{
+    width: 100%;
+    padding: 15px;
+    align-items: center;
+    vertical-align: middle;
+    border: 2px solid #548eaa;
+    background-color: #548eaa;
+    color: white;
+    cursor: pointer;
+    border: unset;
+    border-radius: unset;
+}
+@media (min-width: 992px){
+    .post-data{
+        width: 60% !important;
+    }
+}
+
+@media (max-width: 992px){
+    .header__div {
+        align-items: stretch;
+        justify-content: space-between;
+        flex-direction: column;
+        gap: 1em;
+    }
+    .timer__div{
+        align-self: end;
+    }
+    #start-stop-btn, #pause-btn{
+        padding: 0;
+        margin: 0;
+    }
+    .user {
+        align-self: flex-end;
+    }
+    main {
+        flex-direction: column;
+    }
+    .block{
+        padding: 1em !important;
+    }
+}

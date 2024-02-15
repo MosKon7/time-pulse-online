@@ -1,0 +1,69 @@
+
+/* Оформление надписи приветствия */
+h2.greeting {
+
+}
+
+/* Оформление формы отправки регистрации прибытия/убытия сотрудника */
+.fixed-hour {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1em;
+    margin-top: 2em;
+}
+.form_row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+/* Оформления названия полей */
+label {
+}
+
+/* Оформление поля выбора статуса */
+#select-status {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0;
+    outline: 0;
+    /* Personalize */
+    width: 14em;
+    padding: 0.5em;
+    color: #FFFFFF;
+    background: var(--arrow-icon) no-repeat right 0.8em center/1.4em, linear-gradient(to left, var(--arrow-bg) 3em, var(--select-bg) 3em);
+    cursor: pointer;
+}
+#select-status::-ms-expand {
+    display: none;
+}
+#select-status:focus {
+    outline: none;
+}
+#select-status option {
+    background-color: var(--option-bg);
+}
+/* Оформление поля замечания */
+#comment {
+    width: 15em;
+    padding: 5px;
+    text-overflow: ellipsis;
+}
+
+/* Оформление кнопки формы регистрации */
+#submit-check {
+    width: 100%;
+    padding: 15px;
+
+    align-items: center;
+    vertical-align: middle;
+
+    border: 2px solid #548eaa;
+
+    background-color: #548eaa;
+    color: white;
+    cursor: pointer;
+}

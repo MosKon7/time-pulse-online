@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>IWeb32 | Список сотрудников</title>
+
+    {% load static %}
+
+    <link rel="apple-touch-icon" sizes="180x180" href='{% static "img/apple-touch-icon.png"%}'>
+    <link rel="icon" type="image/png" sizes="32x32" href='{% static "img/favicon-32x32.png"%}'>
+    <link rel="icon" type="image/png" sizes="16x16" href='{% static "img/favicon-16x16.png"%}'>
+    <link rel="manifest" href='{% static "img/site.webmanifest"%}'>
+    <link rel="mask-icon" href='{% static "img/safari-pinned-tab.svg"%}' color="#5bbad5">
+    <meta name="apple-mobile-web-app-title" content="IWeb32">
+    <meta name="application-name" content="IWeb32">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" type="text/css" href='{% static "css/style.css"%}?{% now "U" %}'>
+    <link rel="stylesheet" type="text/css" href='{% static "css/workers_table/indexcss.css"%}?{% now "U" %}'>
+    <script src='{% static "js/script.js"%}'></script>
+
+    <script src='{% static "js/workers_table/employee.js"%}'></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container header__div">
+            <div class="div_logo">
+                <a href="{% url 'register' %}" class="logo">
+                    <img id="logo" src='{% static "img/logo.png"%}' alt="Logo">
+                </a>
+                <div id="timer">
+                    <div class="timer__div">
+                        <span id="current-time"></span>
+                        <div class="current-time-div">
+                            <span id="current-time-day"></span>
+                            <!--<span id="current-time-task"></span>-->
+                        </div>
+                    </div>
+                    <div class="timer__div__btn">
+                        <a href="{% url 'register' %}" id="start-stop-btn" >Статус дня</a>
+                    </div>
+                    <span class="current_task"></span>
+                </div>
+            </div>
+            <div class="nav">
+                <a href="{% url 'list' %}" class="nav-link">Список сотрудников</a>
+                <a href="{% url 'list' %}" class="nav-link">Статистика</a>
+            </div>
+            <div class="user">
+                <a href="{% url 'logout' %}" class="nav-link">Выйти</a>
+                <!--<a href="{% url 'logout' %}" class="nav-link"> Выйти из аккаунта {{request.user}}</a>-->
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div style="width: 100%;">
+            <div class="page_title">
+                <h1>Список сотрудников</h1>
+                <span class="date_low">
+                    От {% now "d E Y" %}
+                </span>
+            </div>
+            <div id="employee">
+            </div>
+            <section class="stuff-table">
+              {% csrf_token %}
+              <table>
+                <thead>
+                  <tr class="table-headers">
+                    <th class="table-header">Фамилия Имя</th>
+                    <th class="table-header">Статус</th>
+                    <th class="table-header">Время</th>
+                    <th class="table-header">Комментарий</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {%for employee in employees%}
+                  <tr class="{%cycle 'employee-inf block' 'employee-inf1 block'%}">
+                    <td><a href="{% url 'get_employee' %}?id={{employee.employee_id | stringformat:'s'}}" onclick="showEmployeeInfo(event)">{{employee.employee_last_name}} {{employee.employee_first_name}}</a></td>
+                    <td>
+                      <span class="{{employee.status}}">
+                        {%if employee.status == "LEFT"%}
+                          Завершил работу
+                        {% endif %}
+                        {%if employee.status == "ARRIVED"%}
+                          Приступил к работе
+                        {% endif %}
+                      </span>
+                    </td>
+                    <td><span class="stuff-table_time"> {{employee.time}}</span></td>
+                    <td>{{employee.reason}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

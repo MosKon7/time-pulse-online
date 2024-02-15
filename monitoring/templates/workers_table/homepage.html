@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>IWeb32 | Главная страница</title>
+
+    {% load static %}
+
+    <link rel="apple-touch-icon" sizes="180x180" href='{% static "img/apple-touch-icon.png"%}'>
+    <link rel="icon" type="image/png" sizes="32x32" href='{% static "img/favicon-32x32.png"%}'>
+    <link rel="icon" type="image/png" sizes="16x16" href='{% static "img/favicon-16x16.png"%}'>
+    <link rel="manifest" href='{% static "img/site.webmanifest"%}'>
+    <link rel="mask-icon" href='{% static "img/safari-pinned-tab.svg"%}' color="#5bbad5">
+    <meta name="apple-mobile-web-app-title" content="IWeb32">
+    <meta name="application-name" content="IWeb32">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" type="text/css" href='{% static "css/style.css"%}?{% now "U" %}'>
+    <link rel="stylesheet" type="text/css" href='{% static "css/workers_table/homepage.css"%}?{% now "U" %}'>
+    <script src='{% static "js/script.js"%}'></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container header__div">
+            <div class="div_logo">
+                <a href="{% url 'register' %}" class="logo">
+                    <img id="logo" src='{% static "img/logo.png"%}' alt="Logo">
+                </a>
+                <div id="timer">
+                    <div class="timer__div">
+                        <span id="current-time"></span>
+                        <div class="current-time-div">
+                            <span id="current-time-day"></span>
+                            <!--<span id="current-time-task"></span>-->
+                        </div>
+                    </div>
+                    <div class="timer__div__btn">
+                        <a href="{% url 'register' %}" id="start-stop-btn" >Статус дня</a>
+                    </div>
+                    <span class="current_task"></span>
+                </div>
+            </div>
+            <div class="nav">
+                <a href="{% url 'list' %}" class="nav-link">Список сотрудников</a>
+                <a href="{% url 'list' %}" class="nav-link">Статистика</a>
+            </div>
+            <div class="user">
+                <a href="{% url 'logout' %}" class="nav-link">Выйти</a>
+                <!--<a href="{% url 'logout' %}" class="nav-link"> Выйти из аккаунта {{request.user}}</a>-->
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <div class="post-data block">
+            <h1 class="hidden">Главная страница</h1>
+            <h2 class="greeting">Здравствуйте, {{user.get_full_name}}</h2>
+            <form id="control" method="POST" action="{% url 'register' %}" class="fixed-hour">
+                {% csrf_token %}
+                <input  type="hidden" name="employee_id" value={{user.id}}>
+                <div class="form_row">
+                    <label for="select-status" class="post-labels">
+                        Выберите статус
+                    </label>
+                    <select id="select-status" name="status" form="control">
+                        <option value="ARRIVED">Начать</option>
+                        <option value="LEFT" selected>Завершить</option>
+                    </select>
+                </div>
+                <div class="form_row">
+                    <label for="comment" class="post-labels">
+                        Комментарий
+                    </label>
+                    <input type="textarea" name="reason" id="comment" placeholder="Введите комментарий" maxlength=100>
+                </div>
+                <div class="form_row">
+                    <input id="submit-check" type="Submit" placeholder="Отправить" width="50px">
+                </div>
+            </form>
+        </div>
+        <div class="feed block">
+            <h2 class="title">Новости</h2>
+            <div class="block_items">
+                <div class="block_items__item">
+                    <div class="feed_date">20.01.2024</div>
+                    <h4 class="title">Важное обновление: Переход к Системе Учета Рабочего Времени Сотрудников</h4>
+                    <br>
+                    <div class="feed-post-text">
+                        <b>Привет, коллеги!</b>
+                        <br>Надеюсь, это письмо находит вас в отличном настроении. Мы хотели бы поделиться с вами важной новостью, касающейся улучшений в нашей организации.
+                        <br><br>В свете постоянных улучшений в наших рабочих процессах, мы приняли решение перейти от использования таблиц Excel для учета рабочего времени к более современной и эффективной Системе Учета Рабочего Времени Сотрудников.
+                        <br><br>Что это значит для нас? Теперь вам необходимо будет использовать новую систему при приходе и уходе из офиса. Это легкое изменение в наших ежедневных привычках, которое призвано упростить процессы и обеспечить более точный учет времени.
+
+                        <br><b>Как это работает?</b>
+                        <br>1) В начале рабочего дня или при по окончанию, в Системе Учета Рабочего Времени в форме (слева от новостей) выбирайте статус "Начать день" или "Завершить" соответственно.
+                        <br>2) Теперь не нужно писать в общем чате об опозданиях или ранних уходах, просто заполнейте комментарий, при желании можно оставлять всегда)
+                        <br>3) ну и отправить)
+                        <br>
+                        <br>Ваш вход и выход будут автоматически заноситься в систему, что позволит нам точно отслеживать рабочее время и улучшить процессы учета.
+                        <br><br>Если у вас возникнут вопросы или затруднения при использовании новой системы, не стесняйтесь обращаться к нашим IT-специалистам. Они будут рады вам помочь и предоставить необходимую поддержку.
+                        <br><br>Мы уверены, что эти изменения сделают нашу работу более эффективной и прозрачной. Благодарим вас за понимание и сотрудничество внедрении этого важного шага вперед.
+                        <br><br>Спасибо за внимание!
+                    </div>
+
+                    <p class="feed_sab">
+                        С наилучшими пожеланиями,
+                        <br>Олеся Ковалева
+                        <br>Менеджер по проектам
+                    </p>
+                </div>
+                <div class="block_items__item">
+                    <div class="feed_date">18.01.2024</div>
+                    <h4 class="title">Ребята, всех с Наступающим! (Старая новость из месенджера)</h4>
+                    <br>
+                    <div class="feed-post-text">
+                        <b>План на пятницу такой:</b>
+                        <br>в 12:00 все дружно заходим по ссылке в Zoom:<br>
+                        <a href="https://us02web.zoom.us/j/82554789644?pwd=L1hLSmVSRUE2dFE0WDIwOG5KRFdQUT09" target="_blank">https://us02web.zoom.us/j/82554789644?...5KRFdQUT09</a>
+                        <br>
+                        <span class="bx-font" style="font-size:8pt; line-height: normal;">Идентификатор конференции: 825 5478 9644</span>
+                        <br>
+                        <span class="bx-font" style="font-size:8pt; line-height: normal;">Код доступа: 821787</span>
+                        <br>
+                        <br>Чтобы все могли друг друга разглядеть давайте включим камеры.
+                        <br>Так же приветствуется наличие с вами в кадре ваших кошечек, детей, жен/ мужей.
+                        <br>Пусть это будет семейный движ.<br>
+                        <br>Для ещё большего эффекта предлагаю челлендж:
+                        <br>1) выберете максимально праздничный фон, чем необычные, тем лучше
+                        <br>2) заходите в Zoom не под своими именами, а выдуманными. Устроим конкурс на лучшее имя в зуме<br>
+                        <br>И если у вас есть таланты,
+                        <br>которые про вас не знают ваши коллеги, отличная возможность показать их всем.
+                        <br>Кто готов прочитать стих, спеть песню, сыграть на гитаре (или на чём угодно), мы обязательно дадим вам эфирное время. Пусть коллеги больше узнают про вас.<br>
+                    </div>
+
+                    <p class="feed_sab">
+                        С наилучшими пожеланиями,
+                        <br>Ольга Петухова
+                        <br>Директор
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+/* Оформление заголовка */
+.page_title {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+h1 {
+    text-align: center;
+}
+
+.date_low{
+    font-size: 14px;
+    justify-self: flex-end;
+    align-self: flex-end;
+}
+/* Оформление блока с таблицей */
+.table-header{
+    color: #FFFFFF;
+    background-color: #548eaa;
+}
+.stuff-table {
+    margin-top: 2em;
+    text-align: center;
+}
+
+/* Удаление пространства между ячейками */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* Оформление заголовков таблицы*/
+thead {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-bottom: 10px solid #ededee;
+}
+
+/* Оформление чередования цветов у строк таблицы */
+.employee-inf {
+    background-color: #ffffff;
+}
+
+.employee-inf1 {
+    background-color: #ededee;
+}
+
+/* Оформление ячеек таблицы и их текст */
+td, th {
+    text-align: center;
+    padding: 0.7em 2em;
+}
+
+/* Оформление ячейки статуса Ушел */
+.LEFT {
+    color: brown;
+    padding: 5px;
+}
+
+/* Оформление ячейки статуса Прибыл */
+.ARRIVED {
+    color: #548eaa;
+    padding: 5px;
+}
+
+/* .search_employee {
+    margin-left: 30px;
+}
+
+ .button {
+    padding: 5px 10px;
+    margin-left: 10px;
+    background-color: #877aff;
+    border: 1px solid #877aff;
+    border-radius: 5em;
+    color: white;
+} 
+
+button::hover {
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #c3c3c3;
+  border-radius: 5px;
+  background: #c3c3c3;
+}
+
+input[type=search] {
+    padding: 5px 50px;
+    border: 2px solid rgb(242, 242, 242);
+    border-radius: 4px;
+  } */
+
+@media (max-width: 996px) {
+    .page_title {
+        margin: 0 1em;
+    }
+    .stuff-table{
+        overflow: scroll;
+    }
+}

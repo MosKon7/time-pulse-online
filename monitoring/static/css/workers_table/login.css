@@ -1,0 +1,37 @@
+/* Оформление тела HTML страницы */
+.login_page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#logo{
+    background-color: #303b44;
+    padding: 2em;
+    object-fit: cover;
+    height: 5em !important;
+    width: 5.5em;
+}
+/* Офрмление формы login */
+.login-form {
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+    margin-top: 5em;
+}
+
+/* Офрмление полей ввода формы login */
+.login-form input {
+    width: 20em;
+    padding: 10px;
+    text-overflow: ellipsis;
+}
+
+/* Офрмление кнопки формы login */
+.button {
+    width: 22em !important;
+}
